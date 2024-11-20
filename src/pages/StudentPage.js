@@ -1,53 +1,90 @@
-import React from "react";
+import React from 'react';
+import './StudentPage.css';
 
-const StudentDashboard = () => {
-  return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-semibold text-center text-blue-600 mb-6">Student Dashboard</h1>
+const StudentPage = () => {
+    // Sample data for leaderboard
+    const students = [
+        { name: 'Student A', completed: 90, total: 100 },
+        { name: 'Student B', completed: 60, total: 100 },
+        { name: 'Student C', completed: 100, total: 100 },
+        { name: 'Student D', completed: 75, total: 100 },
+        { name: 'Student E', completed: 50, total: 100 },
+    ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Assigned Projects Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Assigned Projects</h2>
-            <ul>
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <h3 className="font-bold">Project 1: Web Development</h3>
-                <p className="text-sm text-gray-600">Due date: 12/12/2024</p>
-              </li>
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <h3 className="font-bold">Project 2: Mobile App</h3>
-                <p className="text-sm text-gray-600">Due date: 15/12/2024</p>
-              </li>
-            </ul>
-          </div>
+    return (
+        <div className="container">
+            <header>
+                <h1>Student Portal</h1>
+                <nav>
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#mentors">Mentors</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#logout">Logout</a>
+                </nav>
+            </header>
+            
+            <div className="main-section">
+                <aside className="sidebar">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#assignments">Assignments</a></li>
+                        <li><a href="#mentors">My Mentors</a></li>
+                        <li><a href="#progress">Progress Tracker</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </aside>
+                
+                <main className="content">
+                    <h2>Welcome Back, Student!</h2>
+                    <p>Here’s your personalized dashboard to manage assignments, connect with mentors, and track your academic journey.</p>
+                    
+                    <section className="mentor-section">
+                        <h3>Your Mentors</h3>
+                        <ul>
+                            <li>Alumni A - <em>Assignment Mentor</em></li>
+                            <li>Alumni B - <em>Project Guide</em></li>
+                        </ul>
+                    </section>
 
-          {/* Progress Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Your Progress</h2>
-            <div className="flex items-center justify-between">
-              <span className="text-lg">Project 1 Progress:</span>
-              <span className="text-blue-600 font-bold">75%</span>
+                    <div className="quick-buttons">
+                        <button onClick={() => alert("Downloading Assignment Resources!")}>Download Assignments</button>
+                        <button onClick={() => alert("Viewing Progress Tracker!")}>View Progress</button>
+                    </div>
+
+                    {/* Leaderboard Section */}
+                    <section id="leaderboard" className="leaderboard-section">
+                        <h3>Leaderboard</h3>
+                        <table className="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Completed</th>
+                                    <th>Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {students.map((student, index) => (
+                                    <tr key={index}>
+                                        <td>{student.name}</td>
+                                        <td>{student.completed}/{student.total}</td>
+                                        <td>
+                                            <div className="progress-bar">
+                                                <div
+                                                    className="progress"
+                                                    style={{ width: `${(student.completed / student.total) * 100}%` }}
+                                                ></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </section>
+
+                </main>
             </div>
-            <div className="mt-4">
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '75%' }}></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Metrics Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Your Metrics</h2>
-            <div className="text-sm text-gray-600">
-              <p>Completed Projects: 3</p>
-              <p>Assignments Remaining: 2</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default StudentDashboard;
+export default StudentPage;

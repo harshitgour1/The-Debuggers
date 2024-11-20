@@ -1,46 +1,104 @@
-import React from "react";
+import React from 'react';
+import './AdminPage.css';
 
-const AdminDashboard = () => {
-  return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-semibold text-center text-red-600 mb-6">Admin Dashboard</h1>
+const AdminPage = () => {
+    return (
+        <div className="admin-dashboard">
+            {/* Sidebar */}
+            <aside className="sidebar">
+                <div className="brand">
+                    <h2>Admin Panel</h2>
+                </div>
+                <nav>
+                    <a href="#overview" className="active">Dashboard</a>
+                    <a href="#users">Manage Users</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#analytics">Analytics</a>
+                    <a href="#settings">Settings</a>
+                    <a href="#logout">Logout</a>
+                </nav>
+            </aside>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* User Management Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">User Management</h2>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md">Add New User</button>
-            <ul className="mt-4">
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <p className="font-bold">Student 1</p>
-                <p className="text-sm text-gray-600">Role: Student</p>
-              </li>
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <p className="font-bold">Alumni 1</p>
-                <p className="text-sm text-gray-600">Role: Alumni</p>
-              </li>
-            </ul>
-          </div>
+            {/* Main Content */}
+            <div className="main-content">
+                {/* Header */}
+                <header className="main-header">
+                    <h1>Welcome, Admin!</h1>
+                    <button className="logout-btn">Logout</button>
+                </header>
 
-          {/* Activity Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Activity Overview</h2>
-            <ul>
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <p className="font-bold">Project 1: Web Development</p>
-                <p className="text-sm text-gray-600">Status: In Progress</p>
-              </li>
-              <li className="bg-gray-50 p-3 mb-3 rounded-md shadow">
-                <p className="font-bold">Project 2: Mobile App</p>
-                <p className="text-sm text-gray-600">Status: Completed</p>
-              </li>
-            </ul>
-          </div>
+                {/* Dashboard Overview */}
+                <section id="overview" className="overview">
+                    <h2>Dashboard Overview</h2>
+                    <div className="stats">
+                        <div className="stat-card">
+                            <h3>Total Users</h3>
+                            <p>1,230</p>
+                        </div>
+                        <div className="stat-card">
+                            <h3>Active Projects</h3>
+                            <p>245</p>
+                        </div>
+                        <div className="stat-card">
+                            <h3>Pending Approvals</h3>
+                            <p>14</p>
+                        </div>
+                        <div className="stat-card">
+                            <h3>Feedback Received</h3>
+                            <p>98</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Manage Users */}
+                <section id="users" className="users-section">
+                    <h2>Manage Users</h2>
+                    <table className="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>101</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>Student</td>
+                                <td>
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Jane Smith</td>
+                                <td>jane@example.com</td>
+                                <td>Alumni</td>
+                                <td>
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                {/* Analytics */}
+                <section id="analytics" className="analytics">
+                    <h2>Analytics</h2>
+                    <div className="charts">
+                        <div className="chart">User Growth Chart</div>
+                        <div className="chart">Project Statistics</div>
+                    </div>
+                </section>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default AdminDashboard;
+export default AdminPage;
