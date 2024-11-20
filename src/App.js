@@ -1,21 +1,30 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HeroPage from './pages/HeroPage'; // Import HeroPage
-import LoginPage from './pages/LoginPage';
-import StudentPage from './pages/StudentPage';
-import AlumniPage from './pages/AlumniPage';
-import AdminPage from './pages/AdminPage';
-import 'animate.css';
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HeroPage from "./pages/HeroPage";
+import LandingPage from "./pages/LandingPage";
+import RoleLoginPage from "./pages/RoleLoginPage";
+import AdminPage from "./pages/AdminPage";  // New AdminPage
+import StudentPage from "./pages/StudentPage";  // New StudentPage
+import AlumniPage from "./pages/AlumniPage";  // New AlumniPage
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HeroPage />} /> {/* Add HeroPage as the home page */}
-        <Route path="/login" element={<LoginPage />} />
+        {/* Hero Page */}
+        <Route path="/" element={<HeroPage />} />
+
+        {/* Landing Page */}
+        <Route path="/landing" element={<LandingPage />} />
+
+        {/* Role-based Login Pages */}
+        <Route path="/login/admin" element={<RoleLoginPage role="admin" />} />
+        <Route path="/login/student" element={<RoleLoginPage role="student" />} />
+        <Route path="/login/alumni" element={<RoleLoginPage role="alumni" />} />
+
+        {/* Role Pages */}
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/student" element={<StudentPage />} />
         <Route path="/alumni" element={<AlumniPage />} />
-        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );

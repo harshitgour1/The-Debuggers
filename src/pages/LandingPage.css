@@ -1,0 +1,37 @@
+/* Title Animation */
+@keyframes title-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-title {
+  animation: title-appear 1s ease-out forwards;
+}
+
+/* Button Animation */
+@keyframes button-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-button {
+  animation: button-slide-in 1s ease-out forwards;
+}
+
+/* Fix for staggered button delay (remove opacity-0 and translate-y-10 for buttons once animated) */
+.role-button {
+  opacity: 1 !important; /* Ensure the button is visible after animation */
+  transform: translateY(0) !important; /* Reset transform */
+}
